@@ -7,7 +7,7 @@ public class Formatter {
         int lastNumber = roundPrice % 10;
 
         if (roundPrice == 1 || lastNumber == 1) {
-                rouble = " рублю";
+                rouble = " рубль";
             } else if (roundPrice < 5 || (roundPrice > 21 && lastNumber >= 2 && lastNumber < 5)) {
                 rouble = " рубля";
             } else if (roundPrice <= 20 || roundPrice >= 25 && (lastNumber == 0 || lastNumber >= 5)) {

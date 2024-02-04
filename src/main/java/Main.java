@@ -79,7 +79,7 @@ public class Main {
         }
 
         double eachToPay =  calc.total / calc.personsCount;
-        System.out.println(String.format("Каждый должен заплатить по %.2f %s", eachToPay, Formatter.formatRouble(eachToPay)));
+        System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s", eachToPay, Formatter.formatRouble(eachToPay)));
         scanner.close();
 
     }
