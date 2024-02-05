@@ -51,7 +51,7 @@ public class Main {
                     } else {
                         calc.addProduct(product, price);
                         Product newProduct = calc.order.get(calc.order.size() - 1);
-                        System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен", newProduct.name, newProduct.price,  Formatter.formatRouble(newProduct.price)));
+                        System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен", newProduct.name, newProduct.price,  Formatter.formatRouble(newProduct.price,"рубль", "рубля", "рублей")));
                         System.out.println("Хотите добавить ещё товар?\nДля продолжения введите любой символ.\nДля завершения добавления товаров введите 'Завершить'");
 
                         scanner.nextLine();
@@ -79,7 +79,7 @@ public class Main {
         }
 
         double eachToPay =  calc.total / calc.personsCount;
-        System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s", eachToPay, Formatter.formatRouble(eachToPay)));
+        System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s", eachToPay, Formatter.formatRouble(eachToPay, "рубль", "рубля", "рублей")));
         scanner.close();
 
     }
