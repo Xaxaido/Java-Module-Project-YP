@@ -5,12 +5,18 @@ public class Formatter {
         String rouble;
         int roundPrice = (int) Math.floor(price);
         int lastNumber = roundPrice % 10;
+        int lastTwoNumbers = 1;
 
-        if (roundPrice == 1 || lastNumber == 1) {
+        if (roundPrice >= 10) {
+            String intToStr = String.valueOf(roundPrice);
+            lastTwoNumbers = Integer.parseInt(intToStr.substring(intToStr.length() - 2));
+        }
+
+        if (lastNumber == 1 && lastTwoNumbers != 11) {
                 rouble = " рубль";
-            } else if (roundPrice < 5 || (roundPrice > 21 && lastNumber >= 2 && lastNumber < 5)) {
+            } else if (lastNumber >= 2 && lastNumber < 5 && !(lastTwoNumbers > 10 && lastTwoNumbers < 20)) {
                 rouble = " рубля";
-            } else if (roundPrice <= 20 || roundPrice >= 25 && (lastNumber == 0 || lastNumber >= 5)) {
+            } else if (lastNumber == 0 || lastNumber == 1 || lastNumber >= 5 || lastTwoNumbers < 20) {
                 rouble = " рублей";
             } else {
                 rouble = "";
