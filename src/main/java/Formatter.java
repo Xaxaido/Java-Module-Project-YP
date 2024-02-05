@@ -4,22 +4,17 @@ public class Formatter {
 
         int roundPrice = (int) Math.floor(value);
 
-        int preLastDigit = roundPrice % 100 / 10;
-        if (preLastDigit == 1) {
+        int preLastNumber = roundPrice % 100 / 10;
+        if (preLastNumber == 1) {
             return " " + thirdVariation;
         }
 
-        int lastDigit = roundPrice % 10;
-        switch (lastDigit) {
-            case 1:
-                return " " + firstVariation;
-            case 2:
-            case 3:
-            case 4:
-                return " " + secondVariation;
-            default:
-                return " " + thirdVariation;
-        }
+        int lastNumber = roundPrice % 10;
+        return switch (lastNumber) {
+            case 1 -> " " + firstVariation;
+            case 2, 3, 4 -> " " + secondVariation;
+            default -> " " + thirdVariation;
+        };
 
     }
 
