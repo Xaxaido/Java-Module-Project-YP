@@ -8,9 +8,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String product;
         double price;
-        Calc calc = getPersonsCount(scanner);
-
         boolean isStop = false;
+        Calc calc = getCalc(scanner);
 
         while (true) {
 
@@ -29,7 +28,7 @@ public class Main {
                     } else {
                         calc.addProduct(product, price);
                         Product newProduct = calc.order.get(calc.order.size() - 1);
-                        System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен", newProduct.name, newProduct.price,  Formatter.formatRouble(newProduct.price,"рубль", "рубля", "рублей")));
+                        System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен", newProduct.name, newProduct.price,  Formatter.formatValue(newProduct.price,"рубль", "рубля", "рублей")));
                         System.out.println("Хотите добавить ещё товар?\nДля продолжения введите любой символ.\nДля завершения добавления товаров введите 'Завершить'");
 
                         scanner.nextLine();
@@ -55,7 +54,7 @@ public class Main {
 
     }
 
-    public static Calc getPersonsCount(Scanner scanner) {
+    public static Calc getCalc(Scanner scanner) {
 
         int personsCount;
         Calc calc;
@@ -94,7 +93,7 @@ public class Main {
         }
 
         double eachToPay =  calc.total / calc.personsCount;
-        System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s", eachToPay, Formatter.formatRouble(eachToPay, "рубль", "рубля", "рублей")));
+        System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s", eachToPay, Formatter.formatValue(eachToPay, "рубль", "рубля", "рублей")));
 
     }
 
