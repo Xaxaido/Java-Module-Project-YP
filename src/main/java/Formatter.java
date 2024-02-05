@@ -2,7 +2,7 @@ public class Formatter {
 
     public static String formatRouble(double value, String firstVariation, String secondVariation, String thirdVariation) {
 
-        String rouble;
+        String rouble = "";
         int roundPrice = (int) Math.floor(value);
         int lastNumber = roundPrice % 10;
         int lastTwoNumbers = 1;
@@ -18,8 +18,6 @@ public class Formatter {
                 rouble = " " + secondVariation;
             } else if (lastNumber == 0 || lastNumber == 1 || lastNumber >= 5 || lastTwoNumbers < 20) {
                 rouble = " " + thirdVariation;
-            } else {
-                rouble = "";
             }
 
         return rouble;

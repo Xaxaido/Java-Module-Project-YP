@@ -6,31 +6,9 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        int personsCount;
         String product;
         double price;
-        Calc calc;
-
-        while (true) {
-
-            System.out.println("На скольких человек необходимо разделить счёт?");
-
-            if (scanner.hasNextInt()) {
-                personsCount = scanner.nextInt();
-
-                if (personsCount <= 1) {
-                    errorMessage();
-                } else {
-                    calc = new Calc(personsCount, new ArrayList<Product>());
-                    break;
-                }
-
-            } else {
-                scanner.next();
-                errorMessage();
-            }
-
-        }
+        Calc calc = getPersonsCount(scanner);
 
         boolean isStop = false;
 
@@ -72,6 +50,43 @@ public class Main {
 
         }
 
+        printProducts(calc);
+        scanner.close();
+
+    }
+
+    public static Calc getPersonsCount(Scanner scanner) {
+
+        int personsCount;
+        Calc calc;
+
+        while (true) {
+
+            System.out.println("На скольких человек необходимо разделить счёт?");
+
+            if (scanner.hasNextInt()) {
+                personsCount = scanner.nextInt();
+
+                if (personsCount <= 1) {
+                    errorMessage();
+                } else {
+                    calc = new Calc(personsCount, new ArrayList<Product>());
+                    break;
+                }
+
+            } else {
+                scanner.next();
+                errorMessage();
+            }
+
+        }
+
+        return calc;
+
+    }
+
+    public static void printProducts(Calc calc) {
+
         System.out.println("Добавленные товары:");
 
         for (int i = 0; i < calc.order.size(); i++) {
@@ -80,7 +95,6 @@ public class Main {
 
         double eachToPay =  calc.total / calc.personsCount;
         System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s", eachToPay, Formatter.formatRouble(eachToPay, "рубль", "рубля", "рублей")));
-        scanner.close();
 
     }
 
