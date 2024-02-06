@@ -56,7 +56,8 @@ public class Calc {
         }
 
         double eachToPay =  calc.total / calc.personsCount;
-        System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s", eachToPay, Formatter.formatValue(eachToPay, "рубль", "рубля", "рублей")));
+        System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s",
+                                        eachToPay, Formatter.formatValue(eachToPay, "рубль", "рубля", "рублей")));
 
     }
 
@@ -70,6 +71,7 @@ public class Calc {
 
         this.personsCount = personsCount;
         this.order = order;
+
     }
 
 }

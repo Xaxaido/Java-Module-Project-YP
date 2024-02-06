@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -28,7 +27,7 @@ public class Main {
                     if (price < 0) {
                         Calc.errorMessage();
                     } else {
-                        isStop = newProduct(scanner, calc, product, price);
+                        isStop = newProductOrStop(scanner, calc, product, price);
                         break;
                     }
                 } else {
@@ -45,15 +44,15 @@ public class Main {
 
     }
 
-    public static boolean newProduct(Scanner scanner, Calc calc, String product, double price) {
+    public static boolean newProductOrStop(Scanner scanner, Calc calc, String name, double price) {
 
-        Product newProduct = calc.addProduct(product, price);
+        calc.addProduct(name, price);
         System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен",
-            newProduct.name, newProduct.price, Formatter.formatValue(newProduct.price, "рубль", "рубля", "рублей")));
+                                        name, price, Formatter.formatValue(price, "рубль", "рубля", "рублей")));
         System.out.println("Хотите добавить ещё товар?\nДля продолжения введите любой символ\nДля отображения счёта введите '" + STOP_WORD + "'");
-
         scanner.nextLine();
-        return (scanner.nextLine().equalsIgnoreCase(STOP_WORD));
+
+        return scanner.nextLine().equalsIgnoreCase(STOP_WORD);
 
     }
 
