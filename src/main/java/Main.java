@@ -9,9 +9,9 @@ public class Main {
         String product;
         double price;
         boolean isStop = false;
-        Calc calc = getCalc(scanner);
+        Calc calc = Calc.getInstance(scanner);
 
-        while (true) {
+        do {
 
             System.out.println("Введите название товара");
             product = scanner.next();
@@ -24,11 +24,11 @@ public class Main {
                     price = scanner.nextDouble();
 
                     if (price < 0) {
-                        errorMessage();
+                        Calc.errorMessage();
                     } else {
                         calc.addProduct(product, price);
                         Product newProduct = calc.order.get(calc.order.size() - 1);
-                        System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен", newProduct.name, newProduct.price,  Formatter.formatValue(newProduct.price,"рубль", "рубля", "рублей")));
+                        System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен", newProduct.name, newProduct.price, Formatter.formatValue(newProduct.price, "рубль", "рубля", "рублей")));
                         System.out.println("Хотите добавить ещё товар?\nДля продолжения введите любой символ.\nДля завершения добавления товаров введите 'Завершить'");
 
                         scanner.nextLine();
@@ -40,47 +40,15 @@ public class Main {
                     }
                 } else {
                     scanner.next();
-                    errorMessage();
+                    Calc.errorMessage();
                 }
 
             }
 
-            if (isStop) break;
-
-        }
+        } while (!isStop);
 
         printProducts(calc);
         scanner.close();
-
-    }
-
-    public static Calc getCalc(Scanner scanner) {
-
-        int personsCount;
-        Calc calc;
-
-        while (true) {
-
-            System.out.println("На скольких человек необходимо разделить счёт?");
-
-            if (scanner.hasNextInt()) {
-                personsCount = scanner.nextInt();
-
-                if (personsCount <= 1) {
-                    errorMessage();
-                } else {
-                    calc = new Calc(personsCount, new ArrayList<Product>());
-                    break;
-                }
-
-            } else {
-                scanner.next();
-                errorMessage();
-            }
-
-        }
-
-        return calc;
 
     }
 
@@ -94,12 +62,6 @@ public class Main {
 
         double eachToPay =  calc.total / calc.personsCount;
         System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s", eachToPay, Formatter.formatValue(eachToPay, "рубль", "рубля", "рублей")));
-
-    }
-
-    public static void errorMessage() {
-
-        System.out.println("Недопустимый ввод, попробуйте ещё раз");
 
     }
 

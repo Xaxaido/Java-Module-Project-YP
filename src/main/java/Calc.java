@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Calc {
 
@@ -6,10 +7,46 @@ public class Calc {
     double total;
     ArrayList<Product> order;
 
+    public static Calc getInstance(Scanner scanner) {
+
+        int personsCount;
+        Calc calc;
+
+        while (true) {
+
+            System.out.println("На скольких человек необходимо разделить счёт?");
+
+            if (scanner.hasNextInt()) {
+                personsCount = scanner.nextInt();
+
+                if (personsCount <= 1) {
+                    errorMessage();
+                } else {
+                    calc = new Calc(personsCount, new ArrayList<Product>());
+                    break;
+                }
+
+            } else {
+                scanner.next();
+                errorMessage();
+            }
+
+        }
+
+        return calc;
+
+    }
+
     public void addProduct(String name, double price) {
 
         this.order.add(new Product(name, price));
         this.total = this.total + price;
+
+    }
+
+    public static void errorMessage() {
+
+        System.out.println("Недопустимый ввод, попробуйте ещё раз");
 
     }
 
