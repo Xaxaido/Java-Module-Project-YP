@@ -37,10 +37,13 @@ public class Calc {
 
     }
 
-    public void addProduct(String name, double price) {
+    public Product addProduct(String name, double price) {
 
-        this.order.add(new Product(name, price));
+        Product newProduct = new Product(name, price);
+        this.order.add(newProduct);
         this.total = this.total + price;
+
+        return newProduct;
 
     }
 

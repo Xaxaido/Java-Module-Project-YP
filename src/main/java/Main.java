@@ -8,7 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String product;
         double price;
-        boolean isStop = false;
+        boolean isStop;
         Calc calc = Calc.getInstance(scanner);
 
         do {
@@ -26,16 +26,12 @@ public class Main {
                     if (price < 0) {
                         Calc.errorMessage();
                     } else {
-                        calc.addProduct(product, price);
-                        Product newProduct = calc.order.get(calc.order.size() - 1);
+                        Product newProduct = calc.addProduct(product, price);
                         System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен", newProduct.name, newProduct.price, Formatter.formatValue(newProduct.price, "рубль", "рубля", "рублей")));
                         System.out.println("Хотите добавить ещё товар?\nДля продолжения введите любой символ.\nДля завершения добавления товаров введите 'Завершить'");
 
                         scanner.nextLine();
-                        String command = scanner.nextLine();
-                        if (command.equalsIgnoreCase("Завершить")) {
-                            isStop = true;
-                        }
+                        isStop = (scanner.nextLine().equalsIgnoreCase("Завершить"));
                         break;
                     }
                 } else {
