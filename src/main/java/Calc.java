@@ -44,6 +44,19 @@ public class Calc {
 
     }
 
+    public static void printOrder(Calc calc) {
+
+        System.out.println("Добавленные товары:");
+
+        for (int i = 0; i < calc.order.size(); i++) {
+            System.out.println(calc.order.get(i).name );
+        }
+
+        double eachToPay =  calc.total / calc.personsCount;
+        System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s", eachToPay, Formatter.formatValue(eachToPay, "рубль", "рубля", "рублей")));
+
+    }
+
     public static void errorMessage() {
 
         System.out.println("Недопустимый ввод, попробуйте ещё раз");

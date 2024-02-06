@@ -47,21 +47,8 @@ public class Main {
 
         } while (!isStop);
 
-        printProducts(calc);
+        Calc.printOrder(calc);
         scanner.close();
-
-    }
-
-    public static void printProducts(Calc calc) {
-
-        System.out.println("Добавленные товары:");
-
-        for (int i = 0; i < calc.order.size(); i++) {
-            System.out.println(calc.order.get(i).name );
-        }
-
-        double eachToPay =  calc.total / calc.personsCount;
-        System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s", eachToPay, Formatter.formatValue(eachToPay, "рубль", "рубля", "рублей")));
 
     }
 
