@@ -6,6 +6,7 @@ public class Calc {
     int personsCount;
     double total;
     ArrayList<Product> order;
+    final static String[] valueToFormat = {"рубль", "рубля", "рублей"};
     private static int maxLength = 0;
 
     public static Calc getInstance(Scanner scanner) {
@@ -57,12 +58,15 @@ public class Calc {
         for (int i = 0; i < calc.order.size(); i++) {
             Product product = calc.order.get(i);
             System.out.println(product.name + ".".repeat(maxLength - product.name.length() + 5) + product.price +
-                                                        Formatter.formatValue(product.price, "рубль", "рубля", "рублей"));
+                                                        Formatter.formatValue(product.price, valueToFormat));
         }
 
         double eachToPay =  calc.total / calc.personsCount;
+        String total = String.format("Сумма к оплате для каждого человека: %.2f %s",
+                eachToPay, Formatter.formatValue(eachToPay, valueToFormat));
+        System.out.println("_".repeat(total.length()));
         System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s",
-                                        eachToPay, Formatter.formatValue(eachToPay, "рубль", "рубля", "рублей")));
+                                        eachToPay, Formatter.formatValue(eachToPay, valueToFormat)));
 
     }
 

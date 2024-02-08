@@ -48,7 +48,7 @@ public class Main {
 
         calc.addProduct(productName, price);
         System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен",
-                                        productName, price, Formatter.formatValue(price, "рубль", "рубля", "рублей")));
+                                        productName, price, Formatter.formatValue(price, Calc.valueToFormat)));
         System.out.println("Хотите добавить ещё товар?\nДля продолжения введите любой символ\nДля отображения счёта введите '" + STOP_WORD + "'");
         scanner.nextLine();
 
