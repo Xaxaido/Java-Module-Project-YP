@@ -65,8 +65,7 @@ public class Calc {
         String total = String.format("Сумма к оплате для каждого человека: %.2f %s",
                 eachToPay, Formatter.formatValue(eachToPay, valueToFormat));
         System.out.println("_".repeat(total.length()));
-        System.out.println(String.format("Сумма к оплате для каждого человека: %.2f %s",
-                                        eachToPay, Formatter.formatValue(eachToPay, valueToFormat)));
+        System.out.println(total);
 
     }
 
