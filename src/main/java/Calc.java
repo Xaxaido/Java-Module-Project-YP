@@ -57,15 +57,29 @@ public class Calc {
 
         for (int i = 0; i < calc.order.size(); i++) {
             Product product = calc.order.get(i);
-            System.out.println(product.name + ".".repeat(maxLength - product.name.length() + 5) + product.price +
-                                                        Formatter.formatValue(product.price, valueToFormat));
+            System.out.println(String.format(product.name + ".".repeat(maxLength - product.name.length() + 5) + "%.2f" +
+                                            Formatter.formatValue(product.price, valueToFormat), product.price));
         }
 
         double eachToPay =  calc.total / calc.personsCount;
         String total = String.format("Сумма к оплате для каждого человека: %.2f %s",
-                eachToPay, Formatter.formatValue(eachToPay, valueToFormat));
+                                    eachToPay, Formatter.formatValue(eachToPay, valueToFormat));
         System.out.println("_".repeat(total.length()));
         System.out.println(total);
+
+    }
+
+    public static double fixDouble(String price) {
+
+        double newPrice;
+
+        try {
+            newPrice = Double.parseDouble(price);
+        } catch(NumberFormatException e) {
+            newPrice = -1;
+        }
+
+        return newPrice;
 
     }
 

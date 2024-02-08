@@ -20,19 +20,13 @@ public class Main {
             while (true) {
 
                 System.out.println("Введите стоимость товара");
+                price = Calc.fixDouble(scanner.next());
 
-                if (scanner.hasNextDouble()) {
-                    price = scanner.nextDouble();
-
-                    if (price < 0) {
-                        Calc.errorMessage();
-                    } else {
-                        isStop = newProductOrStop(scanner, calc, productName, price);
-                        break;
-                    }
-                } else {
-                    scanner.next();
+                if (price < 0) {
                     Calc.errorMessage();
+                } else {
+                    isStop = newProductOrStop(scanner, calc, productName, price);
+                    break;
                 }
 
             }
