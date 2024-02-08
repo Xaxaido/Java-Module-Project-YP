@@ -6,6 +6,7 @@ public class Calc {
     int personsCount;
     double total;
     ArrayList<Product> order;
+    private static int maxLength = 0;
 
     public static Calc getInstance(Scanner scanner) {
 
@@ -43,6 +44,8 @@ public class Calc {
         this.order.add(newProduct);
         this.total = this.total + price;
 
+        maxLength = Math.max(maxLength, name.length());
+
         return newProduct;
 
     }
@@ -52,7 +55,9 @@ public class Calc {
         System.out.println("Добавленные товары:");
 
         for (int i = 0; i < calc.order.size(); i++) {
-            System.out.println(calc.order.get(i).name );
+            Product product = calc.order.get(i);
+            System.out.println(product.name + ".".repeat(maxLength - product.name.length() + 5) + product.price +
+                                                        Formatter.formatValue(product.price, "рубль", "рубля", "рублей"));
         }
 
         double eachToPay =  calc.total / calc.personsCount;

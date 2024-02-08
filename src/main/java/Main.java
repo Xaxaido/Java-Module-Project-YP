@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        String product;
+        String productName;
         double price;
         boolean isStop;
         Calc calc = Calc.getInstance(scanner);
@@ -15,7 +15,7 @@ public class Main {
         do {
 
             System.out.println("Введите название товара");
-            product = scanner.next();
+            productName = scanner.next();
 
             while (true) {
 
@@ -27,7 +27,7 @@ public class Main {
                     if (price < 0) {
                         Calc.errorMessage();
                     } else {
-                        isStop = newProductOrStop(scanner, calc, product, price);
+                        isStop = newProductOrStop(scanner, calc, productName, price);
                         break;
                     }
                 } else {
@@ -44,11 +44,11 @@ public class Main {
 
     }
 
-    public static boolean newProductOrStop(Scanner scanner, Calc calc, String name, double price) {
+    public static boolean newProductOrStop(Scanner scanner, Calc calc, String productName, double price) {
 
-        calc.addProduct(name, price);
+        calc.addProduct(productName, price);
         System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен",
-                                        name, price, Formatter.formatValue(price, "рубль", "рубля", "рублей")));
+                                        productName, price, Formatter.formatValue(price, "рубль", "рубля", "рублей")));
         System.out.println("Хотите добавить ещё товар?\nДля продолжения введите любой символ\nДля отображения счёта введите '" + STOP_WORD + "'");
         scanner.nextLine();
 
