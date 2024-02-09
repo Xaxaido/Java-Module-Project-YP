@@ -35,8 +35,7 @@ public class Calc {
 
         Product newProduct = new Product(name, price);
         this.order.add(newProduct);
-        this.total = this.total + price;
-
+        this.total += price;
         maxLength = Math.max(maxLength, name.length());
 
         return newProduct;
@@ -58,20 +57,6 @@ public class Calc {
                                     eachToPay, Formatter.formatValue(eachToPay, valueToFormat));
         System.out.println("_".repeat(total.length()));
         System.out.println(total);
-
-    }
-
-    public static double fixDouble(String price) {
-
-        double newPrice;
-
-        try {
-            newPrice = Double.parseDouble(price);
-        } catch(NumberFormatException e) {
-            newPrice = -1;
-        }
-
-        return newPrice;
 
     }
 
