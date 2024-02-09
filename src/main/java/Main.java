@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        MyScanner scanner = new MyScanner(System.in);
         String productName;
         double price;
         boolean isStop;
@@ -20,7 +20,7 @@ public class Main {
             while (true) {
 
                 System.out.println("Введите стоимость товара");
-                price = Calc.fixDouble(scanner.next());
+                price = scanner.nextDouble();
 
                 if (price < 0) {
                     Calc.errorMessage();
@@ -38,15 +38,14 @@ public class Main {
 
     }
 
-    public static boolean newProductOrStop(Scanner scanner, Calc calc, String productName, double price) {
+    public static boolean newProductOrStop(MyScanner scanner, Calc calc, String productName, double price) {
 
         calc.addProduct(productName, price);
         System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен",
                                         productName, price, Formatter.formatValue(price, Calc.valueToFormat)));
         System.out.println("Хотите добавить ещё товар?\nДля продолжения введите любой символ\nДля отображения счёта введите '" + STOP_WORD + "'");
-        scanner.nextLine();
 
-        return scanner.nextLine().equalsIgnoreCase(STOP_WORD);
+        return scanner.next().equalsIgnoreCase(STOP_WORD);
 
     }
 

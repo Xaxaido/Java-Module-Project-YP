@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Calc {
 
@@ -9,7 +8,7 @@ public class Calc {
     final static String[] valueToFormat = {"рубль", "рубля", "рублей"};
     private static int maxLength = 0;
 
-    public static Calc getInstance(Scanner scanner) {
+    public static Calc getInstance(MyScanner scanner) {
 
         int personsCount;
         Calc calc;
@@ -18,18 +17,11 @@ public class Calc {
 
             System.out.println("На скольких человек необходимо разделить счёт?");
 
-            if (scanner.hasNextInt()) {
-                personsCount = scanner.nextInt();
-
-                if (personsCount <= 1) {
-                    errorMessage();
-                } else {
-                    calc = new Calc(personsCount, new ArrayList<Product>());
-                    break;
-                }
-
+            personsCount = scanner.nextInt();
+            if (personsCount >= 2) {
+                calc = new Calc(personsCount, new ArrayList<Product>());
+                break;
             } else {
-                scanner.next();
                 errorMessage();
             }
 
