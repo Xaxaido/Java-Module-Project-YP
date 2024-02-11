@@ -35,6 +35,12 @@ public class MyScanner {
         scanner.close();
     }
 
+    public static void errorMessage() {
+
+        System.out.println("Недопустимый ввод, попробуйте ещё раз");
+
+    }
+
     public MyScanner(InputStream in) {
         this.scanner = new Scanner(in);
     }

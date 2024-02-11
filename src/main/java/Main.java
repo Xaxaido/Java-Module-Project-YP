@@ -23,7 +23,7 @@ public class Main {
                 price = scanner.nextDouble();
 
                 if (price < 0) {
-                    Calc.errorMessage();
+                    MyScanner.errorMessage();
                 } else {
                     isStop = newProductOrStop(scanner, calc, productName, price);
                     break;

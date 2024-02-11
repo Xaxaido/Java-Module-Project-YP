@@ -22,7 +22,7 @@ public class Calc {
                 calc = new Calc(personsCount, new ArrayList<Product>());
                 break;
             } else {
-                errorMessage();
+                MyScanner.errorMessage();
             }
 
         }
@@ -57,12 +57,6 @@ public class Calc {
                                     eachToPay, Formatter.formatValue(eachToPay, valueToFormat));
         System.out.println("_".repeat(total.length()));
         System.out.println(total);
-
-    }
-
-    public static void errorMessage() {
-
-        System.out.println("Недопустимый ввод, попробуйте ещё раз");
 
     }
 
