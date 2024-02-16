@@ -1,7 +1,11 @@
-public class Product {
+public final class Product {
 
-    String name;
-    double price;
+    private final String name;
+    private final double price;
+
+    public String getName(Product product) { return product.name; }
+
+    public double getPrice(Product product) { return product.price; }
 
     Product(String name, double price) {
 

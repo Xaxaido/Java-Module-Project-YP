@@ -1,8 +1,6 @@
-import java.util.Scanner;
-
 public class Main {
 
-    final static String STOP_WORD = "Завершить";
+    private final static String STOP_WORD = "Завершить";
 
     public static void main(String[] args) {
 
@@ -33,12 +31,12 @@ public class Main {
 
         } while (!isStop);
 
-        Calc.printOrder(calc);
+        calc.printOrder();
         scanner.close();
 
     }
 
-    public static boolean newProductOrStop(MyScanner scanner, Calc calc, String productName, double price) {
+    private static boolean newProductOrStop(final MyScanner scanner, final Calc calc, final String productName, final double price) {
 
         calc.addProduct(productName, price);
         System.out.println(String.format("Товар '%s' стоимостью %.2f %s успешно добавлен",

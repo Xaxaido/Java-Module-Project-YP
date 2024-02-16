@@ -1,6 +1,6 @@
-public class Formatter {
+public final class Formatter {
 
-    public static String formatValue(double value, String[] valueNameToFormat) {
+    public static String formatValue(final double value, final String[] valueNameToFormat) {
 
         int roundedValue = (int) Math.floor(value);
         int preLastNumber = roundedValue % 100 / 10;

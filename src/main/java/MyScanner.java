@@ -1,23 +1,19 @@
 import java.io.InputStream;
 import java.util.Scanner;
 
-public class MyScanner {
+public final class MyScanner {
 
     private final Scanner scanner;
 
-    public String next() {
-        return scanner.next();
-    }
+    public String next() { return scanner.next(); }
 
-    public int nextInt() {
-        return (int) readValue(scanner.next());
-    }
+    public int nextInt() { return (int) readValue(scanner.next()); }
 
     public double nextDouble() {
         return readValue(scanner.next());
     }
 
-    private static double readValue(String value) {
+    private double readValue(final String value) {
 
         double newValue;
 
@@ -35,11 +31,7 @@ public class MyScanner {
         scanner.close();
     }
 
-    public static void errorMessage() {
-
-        System.out.println("Недопустимый ввод, попробуйте ещё раз");
-
-    }
+    public static void errorMessage() { System.out.println("Недопустимый ввод, попробуйте ещё раз"); }
 
     public MyScanner(InputStream in) {
         this.scanner = new Scanner(in);
