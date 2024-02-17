@@ -46,8 +46,8 @@ public final class Calc {
 
         for (int i = 0; i < this.order.size(); i++) {
             Product product = this.order.get(i);
-            String name = product.getName(product);
-            double price = product.getPrice(product);
+            String name = product.getName();
+            double price = product.getPrice();
             System.out.println(String.format(name + ".".repeat(maxLength - name.length() + 5) + "%.2f" +
                                             Formatter.formatValue(price, valueToFormat), price));
         }
@@ -60,7 +60,7 @@ public final class Calc {
 
     }
 
-    Calc(final int personsCount, final ArrayList<Product> order) {
+    Calc(int personsCount, ArrayList<Product> order) {
 
         this.personsCount = personsCount;
         this.order = order;
