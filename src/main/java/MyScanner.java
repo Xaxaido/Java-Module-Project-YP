@@ -7,7 +7,7 @@ public final class MyScanner {
 
     public String next() { return scanner.next(); }
 
-    public int nextInt() { return (int) readValue(scanner.next()); }
+    public int nextInt() { return (int) nextDouble(); }
 
     public double nextDouble() {
         return readValue(scanner.next());

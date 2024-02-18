@@ -6,21 +6,19 @@ public final class Calc {
     private double total;
     private final ArrayList<Product> order;
     final static String[] valueToFormat = {"рубль", "рубля", "рублей"};
-    private static int maxLength = 0;
+    private int maxLength = 0;
 
     public static Calc getInstance(final MyScanner scanner) {
 
-        int personsCount;
-        Calc calc;
+        Calc calc = null;
 
-        while (true) {
+        while (calc == null) {
 
             System.out.println("На скольких человек необходимо разделить счёт?");
 
-            personsCount = scanner.nextInt();
+            int personsCount = scanner.nextInt();
             if (personsCount >= 2) {
                 calc = new Calc(personsCount, new ArrayList<Product>());
-                break;
             } else {
                 MyScanner.errorMessage();
             }
@@ -34,8 +32,8 @@ public final class Calc {
     public void addProduct(final String name, final double price) {
 
         Product newProduct = new Product(name, price);
-        this.order.add(newProduct);
-        this.total += price;
+        order.add(newProduct);
+        total += price;
         maxLength = Math.max(maxLength, name.length());
 
     }
@@ -44,15 +42,14 @@ public final class Calc {
 
         System.out.println("Добавленные товары:");
 
-        for (int i = 0; i < this.order.size(); i++) {
-            Product product = this.order.get(i);
+        for (Product product : order) {
             String name = product.getName();
             double price = product.getPrice();
             System.out.println(String.format(name + ".".repeat(maxLength - name.length() + 5) + "%.2f" +
                                             Formatter.formatValue(price, valueToFormat), price));
         }
 
-        double eachToPay =  this.total / this.personsCount;
+        double eachToPay =  total / personsCount;
         String total = String.format("Сумма к оплате для каждого человека: %.2f %s",
                                     eachToPay, Formatter.formatValue(eachToPay, valueToFormat));
         System.out.println("_".repeat(total.length()));
